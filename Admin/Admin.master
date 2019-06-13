@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Admin_Admin" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <asp:PlaceHolder ID="PlaceHolder1" runat="server">      
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference ID="BundleReference1" runat="server" Path="../Content/css" /> 
+    <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <style>
+        li {
+            float:left;
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">
+                    Admin </p>
+            </div>
+            <div class="float-right">
+                <nav>
+                    <ul id="menu" style="list-style:none;">
+                        <li><a id="A1" runat="server" href="AddCat.aspx">Add Category</a></li>
+                        <li><a id="A2" runat="server" href="Add.aspx">Add Products</a></li>
+                        <li>Delete Products<asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="CName" DataValueField="CID" Height="16px" Width="16px" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged1"></asp:DropDownList>
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:electronicsConnectionString %>" SelectCommand="SELECT [CID], [CName] FROM [Cate]"></asp:SqlDataSource>
+                            </li>
+                        <li><a id="A4" runat="server" href="Order.aspx">View Orders</a> </li>   
+                        <li><a id="A5" runat="server" href="Payment.aspx">View Payments</a></li>
+                        <li><a id="A6" runat="server" href="Feedback.aspx">View Feedback</a></li>
+                        <li><a id="A7" runat="server" href="Logout.aspx">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        <br />
+        <br />
+        <br />
+
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>
+                    © Admin</div>
+        </div>
+    </footer>
+    </form>
+</body>
+</html>
